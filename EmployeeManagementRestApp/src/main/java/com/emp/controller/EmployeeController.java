@@ -54,20 +54,20 @@ public class EmployeeController {
 		} else
 			throw new EmployeeNotFoundException("Employee Not Found");
 	}
-
-	@PostMapping(value = "/")
-	public ResponseEntity<Employee> saveEmployee(@Valid @RequestBody Employee employee) {
+//
+	@PostMapping(value = "/",consumes = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE},produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
+	public Employee saveEmployee(@RequestBody Employee employee) {
 		Employee saveEmp = employeeService.saveEmployee(employee);
 		System.out.println("....post...");
 //		Optional<Employee> optionalEmployee = Optional.ofNullable(saveEmp);
 //		if (optionalEmployee.isPresent()) {
 
-		return new ResponseEntity<Employee>(saveEmp, HttpStatus.CREATED);
+		return saveEmp;
 //		}
 	}
-
-	@PutMapping(value = "/{id}")
-	public ResponseEntity<Employee> update(@PathVariable long id, @RequestBody Employee employee) {
+//
+	@PutMapping(value = "/{id}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public Employee update(@PathVariable long id, @RequestBody Employee employee) {
 		Optional<Employee> emp = employeeService.getEmployeeById(id);
 		System.out.println(emp.toString());
 		if (emp.isPresent()) {
@@ -84,7 +84,7 @@ public class EmployeeController {
 				emp.get().setDesignation(employee.getDesignation());
 
 			employeeService.updateEmployee(emp.get());
-			return ResponseEntity.ok(emp.get());
+			return emp.get();
 		} else {
 			throw new EmployeeNotFoundException("Employee Not Found");
 		}

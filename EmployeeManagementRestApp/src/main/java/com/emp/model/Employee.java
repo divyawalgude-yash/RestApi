@@ -16,12 +16,24 @@ public class Employee {
 	@Id
 	@GeneratedValue
 	private Long id;
-	@NotBlank(message = "Employee name must not be empty")
 	private String name;
 	private String designation;
 	private Integer salary;
 	
 	
+	
+	public Employee(Long id, String name, String designation,
+			Integer salary) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.designation = designation;
+		this.salary = salary;
+	}
+	public Employee() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Long getId() {
 		return id;
 	}

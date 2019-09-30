@@ -2,14 +2,14 @@ package com.emp.model;
 
 import java.time.LocalDate;
 
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 public class ErrorMessage {
 
 	private String Message;
 	private String status;
 	private LocalDate date;
-	
-	
 	
 	public ErrorMessage(String message, String status, LocalDate date) {
 		super();
