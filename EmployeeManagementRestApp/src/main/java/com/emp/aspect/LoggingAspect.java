@@ -35,7 +35,7 @@ public class LoggingAspect {
 //		System.out.println("******" + joinPoint.getSignature().getName());
 //		System.out.println("******" + joinPoint.getSourceLocation());
 		logger.info("LoggingAspect.beforeLog()");
-		logger.info("******" + joinPoint.getArgs());
+		logger.info("******" + joinPoint.getArgs()); 
 
 		logger.info("******" + joinPoint.getSignature());
 		logger.info("******" + joinPoint.getSourceLocation());

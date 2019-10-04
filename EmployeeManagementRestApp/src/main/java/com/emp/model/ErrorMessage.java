@@ -20,21 +20,17 @@ public class ErrorMessage {
 	public String getMessage() {
 		return Message;
 	}
-	public void setMessage(String message) {
-		Message = message;
-	}
+
 	public LocalDate getDate() {
 		return date;
 	}
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
+
 	public String getStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
+//	public void setStatus(String status) {
+//		this.status = status;
+//	}
 	
 	
 }

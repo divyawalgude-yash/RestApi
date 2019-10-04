@@ -26,12 +26,5 @@ public class CustomizedExceptionHandler{
 		ErrorMessage error = new ErrorMessage(e.getMessage(), "Bad Request", LocalDate.now());
 		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
 	}
-	
-//	@Override
-//	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
-//			HttpHeaders headers, HttpStatus status, WebRequest request) {
-//
-//		ErrorMessage error = new ErrorMessage("Validation Failed", "Bad Request", LocalDate.now());
-//		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
-//	}
+
 }
