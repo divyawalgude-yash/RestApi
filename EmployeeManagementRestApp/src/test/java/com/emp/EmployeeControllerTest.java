@@ -66,12 +66,12 @@ public class EmployeeControllerTest {
 
 		when(employeeService.getEmployeeList()).thenReturn(employeeList);
 
-		RequestBuilder requestBuilder = get("/employees/all").accept(MediaType.APPLICATION_JSON_VALUE);
+		RequestBuilder requestBuilder = get("/employees/").accept(MediaType.APPLICATION_JSON_VALUE);
 		MvcResult mvcResult = mockMvc.perform(requestBuilder).andReturn();
 		System.out.println(mvcResult.getResponse().getContentAsString());
 		verify(employeeService).getEmployeeList();
 	}
-
+  
 	@Test
 	public void shouldReturnEmployeeListInXmlDataformat() throws Exception {
 		List<Employee> employeeList = new ArrayList<Employee>();
@@ -79,7 +79,7 @@ public class EmployeeControllerTest {
 
 		when(employeeService.getEmployeeList()).thenReturn(employeeList);
 
-		RequestBuilder requestBuilder = get("/employees/all").accept(MediaType.APPLICATION_XML_VALUE);
+		RequestBuilder requestBuilder = get("/employees/").accept(MediaType.APPLICATION_XML_VALUE);
 		MvcResult mvcResult = mockMvc.perform(requestBuilder).andReturn();
 		System.out.println(mvcResult.getResponse().getContentAsString());
 		verify(employeeService).getEmployeeList();
@@ -166,7 +166,7 @@ public class EmployeeControllerTest {
 
 		List<Employee> emplist = new ArrayList<Employee>();
 		when(employeeService.getEmployeeList()).thenReturn(emplist);
-		RequestBuilder requestBuilder = get("/employees/all");
+		RequestBuilder requestBuilder = get("/employees/");
 		mockMvc.perform(requestBuilder).andExpect(status().isNotFound())
 				.andExpect(jsonPath("$.status").value("Not Found"))
 				.andExpect(jsonPath("$.message").value("Employees Not Found"));
@@ -200,16 +200,7 @@ public class EmployeeControllerTest {
 		mockMvc.perform(delete("/employees/{id}", "gfdfgd")).andExpect(status().isBadRequest());
 	}
 
-//	
-//	@Test
-//	public void ShouldReturnTrueIfEmployeeEqualAndHashCodeMethodReturnTrue()
-//	{
-//		Employee employee1=new Employee((long)1, "divya", "software Engg", 4000);
-//		Employee employee2=new Employee((long)1, "divya", "software Engg", 4000);
-//
-//		assertEquals(employee1, employee2);
-//		assertTrue( employee1.hashCode()==employee2.hashCode() );
-//	}
+
 	
 	public Employee getDummyEmployee() {
 		Employee employee = new Employee();

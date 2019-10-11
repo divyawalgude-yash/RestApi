@@ -2,11 +2,14 @@ package com.emp.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import io.swagger.annotations.ApiModelProperty;
 
 @Table
 @Entity
@@ -14,10 +17,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Employee {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@ApiModelProperty(notes = "Name of the Employee",name="name",value="divya")
 	private String name;
+	@ApiModelProperty(notes = "Designation of the Employee",name="designation",value="software Engineer")
 	private String designation;
+	@ApiModelProperty(notes = "Salary of the Employee",name="salary",value="1001")
 	private Integer salary;
 	
 	
